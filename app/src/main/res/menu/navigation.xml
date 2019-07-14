@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_all"
+        android:icon="@drawable/ic_view_list_black_24dp"
+        android:title="@string/all"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/favorites"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+</menu>

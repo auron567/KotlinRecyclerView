@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Creatures</string>
+    <string name="all">All</string>
+    <string name="favorites">Favorites</string>
+    <string name="content_description_creature_image">Creature Image</string>
+    <string name="content_description_favorite_button">Favorite Button</string>
+    <string name="invalid_creature">Invalid creature</string>
+    <string name="creature_activity_title">Creature: %1$s</string>
+    <string name="added_favorites">Added to favorites</string>
+    <string name="removed_favorites">Removed to favorites</string>
+</resources>
