@@ -1,4 +1,5 @@
 <resources>
     <dimen name="padding_standard">16dp</dimen>
     <dimen name="padding_half">8dp</dimen>
+    <dimen name="list_item_creature_height">100dp</dimen>
 </resources>

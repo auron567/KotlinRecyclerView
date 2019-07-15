@@ -30,6 +30,8 @@ object CreatureStore {
         Log.d(TAG, "Found ${foods.size} foods")
     }
 
+    fun getCreatures() = creatures
+
     fun getCreatureById(id: Int): Creature? {
         return creatures.firstOrNull { it.id == id }
     }
