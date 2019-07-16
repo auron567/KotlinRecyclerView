@@ -17,7 +17,7 @@ class AllFragment : Fragment() {
         fun newInstance() = AllFragment()
     }
 
-    private val adapter = CreatureAdapter(CreatureStore.getCreatures())
+    private val adapter = CreatureAdapter(CreatureStore.getCreatures().toMutableList())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_all, container, false)

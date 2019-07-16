@@ -31,7 +31,7 @@ object Favorites {
         saveFavorites(context, KEY_FAVORITES, favorites)
     }
 
-    private fun getFavorites(context: Context): MutableList<Int> {
+    fun getFavorites(context: Context): MutableList<Int> {
         if (favorites == null) {
             val json = sharedPrefs(context).getString(KEY_FAVORITES, "")
             val listType = object : TypeToken<MutableList<Int>>() {}.type
