@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.app.inflate
 import com.example.kotlinrecyclerview.model.Creature
+import com.example.kotlinrecyclerview.ui.creature.CreatureActivity
 import kotlinx.android.synthetic.main.list_item_creature.view.*
 
 class CreatureAdapter(private val creatures: List<Creature>) : RecyclerView.Adapter<CreatureAdapter.ViewHolder>() {
@@ -20,8 +21,12 @@ class CreatureAdapter(private val creatures: List<Creature>) : RecyclerView.Adap
         holder.bind(creatures[position])
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private lateinit var creature: Creature
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(creature: Creature) {
             this.creature = creature
@@ -32,6 +37,12 @@ class CreatureAdapter(private val creatures: List<Creature>) : RecyclerView.Adap
             )
             itemView.creature_name.text = creature.fullName
             itemView.creature_nickname.text = creature.nickname
+        }
+
+        override fun onClick(view: View) {
+            val context = view.context
+            val intent = CreatureActivity.newIntent(context, creature.id)
+            context.startActivity(intent)
         }
     }
 }
