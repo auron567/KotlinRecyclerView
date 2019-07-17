@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/creature_bird_blue_fly_1" />
+        tools:src="@drawable/thumbnail_creature_bird_blue_fly_1" />
 
     <TextView
         android:id="@+id/creature_name"

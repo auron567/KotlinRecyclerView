@@ -5,10 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.Creature
 import com.example.kotlinrecyclerview.model.CreatureStore
 import com.example.kotlinrecyclerview.model.Favorites
+import com.example.kotlinrecyclerview.ui.adapter.FoodAdapter
 import kotlinx.android.synthetic.main.activity_creature.*
 
 class CreatureActivity : AppCompatActivity() {
@@ -23,6 +25,7 @@ class CreatureActivity : AppCompatActivity() {
     }
 
     private lateinit var creature: Creature
+    private val adapter = FoodAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,7 @@ class CreatureActivity : AppCompatActivity() {
             setupTitle()
             setupViews()
             setupFavoriteButton()
+            setupFoods()
         }
     }
 
@@ -74,5 +78,14 @@ class CreatureActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.added_favorites, Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun setupFoods() {
+        food_recycler_view.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        food_recycler_view.adapter = adapter
+
+        val foods = CreatureStore.getCreatureFoods(creature)
+        adapter.updateFoods(foods)
     }
 }

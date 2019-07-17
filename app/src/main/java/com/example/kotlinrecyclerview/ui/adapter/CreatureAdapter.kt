@@ -1,4 +1,4 @@
-package com.example.kotlinrecyclerview.ui
+package com.example.kotlinrecyclerview.ui.adapter
 
 import android.view.View
 import android.view.ViewGroup

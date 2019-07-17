@@ -60,4 +60,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_favorite_border_black_24dp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/food_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/list_item_food_height"
+        android:layout_marginTop="@dimen/padding_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/planet_name"
+        tools:listitem="@layout/list_item_food"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:orientation="horizontal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
