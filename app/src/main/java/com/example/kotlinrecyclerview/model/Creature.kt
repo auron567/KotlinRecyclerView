@@ -7,6 +7,7 @@ data class Creature(
     val nickname: String,
     val image: String,
     val planet: String,
+    val backgroundColor: Int,
     val foods: List<Int>,
     var isFavorite: Boolean = false
 ) {

@@ -6,6 +6,7 @@
     "nickname" : "Blue",
     "image" : "creature_bird_blue_fly_1",
     "planet" : "Neptune",
+    "backgroundColor" : -14112544,
     "foods" : [
       13,
       9,
@@ -28,6 +29,7 @@
     "nickname" : "Cowie",
     "image" : "creature_cow_01",
     "planet" : "Mars",
+    "backgroundColor" : -986896,
     "foods" : [
       7,
       3,
@@ -50,6 +52,7 @@
     "nickname" : "Foxie",
     "image" : "creature_head_fox",
     "planet" : "Jupiter",
+    "backgroundColor" : -2084840,
     "foods" : [
       11,
       2,
@@ -72,6 +75,7 @@
     "nickname" : "People-eater",
     "image" : "creature_monster_purple",
     "planet" : "Jupiter",
+    "backgroundColor" : -7311184,
     "foods" : [
       10,
       2,
@@ -94,6 +98,7 @@
     "nickname" : "Little Piggie",
     "image" : "creature_head_pig",
     "planet" : "Earth",
+    "backgroundColor" : -481080,
     "foods" : [
       2,
       6,
@@ -115,6 +120,7 @@
     "nickname" : "Dozy",
     "image" : "creature_dog_bone",
     "planet" : "Mars",
+    "backgroundColor" : -7810832,
     "foods" : [
       11,
       4,
@@ -131,6 +137,7 @@
     "nickname" : "Sassy",
     "image" : "creature_skunk",
     "planet" : "Mercury",
+    "backgroundColor" : -12040120,
     "foods" : [
       4,
       5,
@@ -145,6 +152,7 @@
     "nickname" : "Bliss",
     "image" : "creature_bear_sleepy",
     "planet" : "Venus",
+    "backgroundColor" : -10461088,
     "foods" : [
       3,
       7,
@@ -161,6 +169,7 @@
     "nickname" : "Ice",
     "image" : "creature_app_whistle_1",
     "planet" : "Jupiter",
+    "backgroundColor" : -7810832,
     "foods" : [
       1,
       3,
@@ -177,6 +186,7 @@
     "nickname" : "Debbie",
     "image" : "creature_duck_yellow_1",
     "planet" : "Uranus",
+    "backgroundColor" : -460800,
     "foods" : [
       12,
       4,
@@ -193,6 +203,7 @@
     "nickname" : "Bashy",
     "image" : "creature_bug_insect_happy",
     "planet" : "Earth",
+    "backgroundColor" : -481264,
     "foods" : [
       7,
       3,
@@ -209,6 +220,7 @@
     "nickname" : "Snarky",
     "image" : "creature_bug_spider",
     "planet" : "Mars",
+    "backgroundColor" : -9934736,
     "foods" : [
       6,
       8,
@@ -225,6 +237,7 @@
     "nickname" : "Cagy",
     "image" : "creature_cat_derp",
     "planet" : "Mercury",
+    "backgroundColor" : -12566464,
     "foods" : [
       2,
       5,
@@ -241,6 +254,7 @@
     "nickname" : "Deano",
     "image" : "creature_dino_01",
     "planet" : "Saturn",
+    "backgroundColor" : -10954592,
     "foods" : [
       1,
       6,
@@ -257,6 +271,7 @@
     "nickname" : "Fancy",
     "image" : "creature_frog_hungry",
     "planet" : "Venus",
+    "backgroundColor" : -7292880,
     "foods" : [
       5,
       4,
@@ -273,6 +288,7 @@
     "nickname" : "Tommy",
     "image" : "creature_head_tiger",
     "planet" : "Jupiter",
+    "backgroundColor" : -1007576,
     "foods" : [
       6,
       2,
@@ -289,6 +305,7 @@
     "nickname" : "Mysty",
     "image" : "creature_monkey_happy",
     "planet" : "Saturn",
+    "backgroundColor" : -14673888,
     "foods" : [
       1,
       2,
@@ -305,6 +322,7 @@
     "nickname" : "Shady",
     "image" : "creature_monster_slug",
     "planet" : "Mercury",
+    "backgroundColor" : -487392,
     "foods" : [
       4,
       13,
@@ -321,6 +339,7 @@
     "nickname" : "Yummy",
     "image" : "creature_monster_yeti_1",
     "planet" : "Uranus",
+    "backgroundColor" : -5195560,
     "foods" : [
       7,
       2,
@@ -337,6 +356,7 @@
     "nickname" : "Owlie",
     "image" : "creature_owl_attack_1",
     "planet" : "Neptune",
+    "backgroundColor" : -2565928,
     "foods" : [
       5,
       8,
@@ -353,6 +373,7 @@
     "nickname" : "Peppy",
     "image" : "creature_panda_fun",
     "planet" : "Uranus",
+    "backgroundColor" : -12566464,
     "foods" : [
       1,
       2,
@@ -369,6 +390,7 @@
     "nickname" : "Penny",
     "image" : "creature_penguin_plane",
     "planet" : "Mercury",
+    "backgroundColor" : -12535624,
     "foods" : [
       3,
       6,
@@ -385,6 +407,7 @@
     "nickname" : "Ritzy",
     "image" : "creature_rat",
     "planet" : "Saturn",
+    "backgroundColor" : -9934736,
     "foods" : [
       3,
       4,
@@ -401,6 +424,7 @@
     "nickname" : "Wolfie",
     "image" : "creature_wolf_crazy",
     "planet" : "Mars",
+    "backgroundColor" : -8355712,
     "foods" : [
       7,
       10,
@@ -417,6 +441,7 @@
     "nickname" : "Biff",
     "image" : "creature_square_bunny",
     "planet" : "Venus",
+    "backgroundColor" : -5721920,
     "foods" : [
       4,
       2,

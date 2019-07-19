@@ -1,0 +1,51 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/creature_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_half"
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:elevation="@dimen/card_elevation"
+    tools:backgroundTint="@color/colorAccent">
+
+    <ImageView
+        android:id="@+id/creature_image"
+        android:layout_width="@dimen/card_image_size"
+        android:layout_height="@dimen/card_image_size"
+        android:layout_gravity="center"
+        android:contentDescription="@string/content_description_creature_image"
+        android:scaleType="fitXY"
+        tools:src="@drawable/thumbnail_creature_monster_purple" />
+
+    <!-- Used for the ripple effect on touch -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground" />
+    
+    <LinearLayout
+        android:id="@+id/nickname_holder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_nickname_holder_height"
+        android:layout_gravity="bottom"
+        android:alpha="0.9"
+        tools:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/creature_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="@dimen/padding_half"
+            android:paddingEnd="@dimen/padding_half"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            tools:textColor="@android:color/black"
+            tools:text="People-eater" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
