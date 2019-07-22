@@ -37,7 +37,7 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
             itemView.creature_image.setImageResource(
                 context.resources.getIdentifier(creature.thumbnail, null, context.packageName)
             )
-            itemView.creature_nickname.text = creature.nickname
+            itemView.creature_name.text = creature.fullName
             setBackgroundColors()
         }
 
@@ -49,11 +49,10 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
 
         private fun setBackgroundColors() {
             val backgroundColor = creature.backgroundColor
-            itemView.creature_card.setBackgroundColor(backgroundColor)
-            itemView.nickname_holder.setBackgroundColor(backgroundColor)
+            itemView.creature_card.setCardBackgroundColor(backgroundColor)
 
             val textColor = if (isColorDark(backgroundColor)) Color.WHITE else Color.BLACK
-            itemView.creature_nickname.setTextColor(textColor)
+            itemView.creature_name.setTextColor(textColor)
         }
 
         private fun isColorDark(color: Int): Boolean {

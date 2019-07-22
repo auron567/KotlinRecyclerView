@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.CreatureStore
 import com.example.kotlinrecyclerview.ui.adapter.CreatureCardAdapter
@@ -27,13 +27,7 @@ class AllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = GridLayoutManager(activity, 3, RecyclerView.VERTICAL, false)
-        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if ((position + 1) % 7 == 0) 3 else 1
-            }
-        }
-
+        val layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         creature_recycler_view.layoutManager = layoutManager
         creature_recycler_view.adapter = adapter
     }
