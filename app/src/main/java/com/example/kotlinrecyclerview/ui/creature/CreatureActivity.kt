@@ -5,7 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.Creature
 import com.example.kotlinrecyclerview.model.CreatureStore
@@ -82,7 +83,7 @@ class CreatureActivity : AppCompatActivity() {
 
     private fun setupFoods() {
         food_recycler_view.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(this, 3, RecyclerView.VERTICAL, false)
         food_recycler_view.adapter = adapter
 
         val foods = CreatureStore.getCreatureFoods(creature)
