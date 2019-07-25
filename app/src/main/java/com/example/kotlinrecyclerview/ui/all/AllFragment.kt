@@ -18,6 +18,9 @@ class AllFragment : Fragment() {
 
     private val adapter = CreatureCardAdapter(CreatureStore.getCreatures().toMutableList())
     private lateinit var layoutManager: StaggeredGridLayoutManager
+    private lateinit var listItemDecoration: RecyclerView.ItemDecoration
+    private lateinit var gridItemDecoration: RecyclerView.ItemDecoration
+    private var gridState = GridState.GRID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,12 @@ class AllFragment : Fragment() {
         layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         creature_recycler_view.layoutManager = layoutManager
         creature_recycler_view.adapter = adapter
+
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.padding_standard)
+        listItemDecoration = SpacingItemDecoration(1, spacingInPixels)
+        gridItemDecoration = SpacingItemDecoration(2, spacingInPixels)
+
+        creature_recycler_view.addItemDecoration(gridItemDecoration)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -41,25 +50,50 @@ class AllFragment : Fragment() {
         inflater.inflate(R.menu.menu_all, menu)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+
+        val listMenuItem = menu.findItem(R.id.action_span_1)
+        val gridMenuItem = menu.findItem(R.id.action_span_2)
+        when (gridState) {
+            GridState.LIST -> {
+                listMenuItem.isEnabled = false
+                gridMenuItem.isEnabled = true
+            }
+            GridState.GRID -> {
+                listMenuItem.isEnabled = true
+                gridMenuItem.isEnabled = false
+            }
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_span_1 -> {
-                showListView()
+                gridState = GridState.LIST
+                updateRecyclerView(1, listItemDecoration, gridItemDecoration)
                 return true
             }
             R.id.action_span_2 -> {
-                showGridView()
+                gridState = GridState.GRID
+                updateRecyclerView(2, gridItemDecoration, listItemDecoration)
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showListView() {
-        layoutManager.spanCount = 1
+    private fun updateRecyclerView(
+        spanCount: Int,
+        addItemDecoration: RecyclerView.ItemDecoration,
+        removeItemDecoration: RecyclerView.ItemDecoration
+    ) {
+        layoutManager.spanCount = spanCount
+        creature_recycler_view.removeItemDecoration(removeItemDecoration)
+        creature_recycler_view.addItemDecoration(addItemDecoration)
     }
 
-    private fun showGridView() {
-        layoutManager.spanCount = 2
+    private enum class GridState {
+        LIST, GRID
     }
 }
