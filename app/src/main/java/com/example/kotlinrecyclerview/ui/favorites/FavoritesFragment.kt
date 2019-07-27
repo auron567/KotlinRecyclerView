@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinrecyclerview.R
@@ -28,6 +29,11 @@ class FavoritesFragment : Fragment() {
 
         favorites_recycler_view.layoutManager = LinearLayoutManager(activity)
         favorites_recycler_view.adapter = adapter
+
+        val heightInPixels = resources.getDimensionPixelSize(R.dimen.list_item_divider_height)
+        val itemDecoration = DividerItemDecoration(ContextCompat.getColor(context!!, R.color.black), heightInPixels)
+
+        favorites_recycler_view.addItemDecoration(itemDecoration)
     }
 
     override fun onResume() {
