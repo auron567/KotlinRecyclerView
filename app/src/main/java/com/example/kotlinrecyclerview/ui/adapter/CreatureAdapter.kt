@@ -2,6 +2,7 @@ package com.example.kotlinrecyclerview.ui.adapter
 
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.app.inflate
@@ -44,12 +45,20 @@ class CreatureAdapter(private val creatures: MutableList<Creature>)
             )
             itemView.creature_name.text = creature.fullName
             itemView.creature_nickname.text = creature.nickname
+            animateView(itemView)
         }
 
         override fun onClick(view: View) {
             val context = view.context
             val intent = CreatureActivity.newIntent(context, creature.id)
             context.startActivity(intent)
+        }
+
+        private fun animateView(viewToAnimate: View) {
+            if (viewToAnimate.animation == null) {
+                val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.scale_xy)
+                viewToAnimate.animation = animation
+            }
         }
     }
 }
