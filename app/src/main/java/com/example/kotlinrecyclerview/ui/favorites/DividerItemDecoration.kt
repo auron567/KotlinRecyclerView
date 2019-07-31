@@ -3,6 +3,7 @@ package com.example.kotlinrecyclerview.ui.favorites
 import android.graphics.Canvas
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinrecyclerview.ui.adapter.CreatureAdapter
 
 class DividerItemDecoration(color: Int, private val heightInPixels: Int) : RecyclerView.ItemDecoration() {
     private val paint = Paint()
@@ -21,12 +22,17 @@ class DividerItemDecoration(color: Int, private val heightInPixels: Int) : Recyc
         val childCount = parent.childCount
         for (i in 0 until childCount) {
             val child = parent.getChildAt(i)
-            val params = child.layoutParams as RecyclerView.LayoutParams
+            val position = parent.getChildAdapterPosition(child)
+            val viewType = parent.adapter?.getItemViewType(position)
 
-            val top = child.bottom + params.bottomMargin
-            val bottom = top + heightInPixels
+            if (viewType == CreatureAdapter.ViewType.CREATURE.ordinal) {
+                val params = child.layoutParams as RecyclerView.LayoutParams
 
-            c.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), paint)
+                val top = child.bottom + params.bottomMargin
+                val bottom = top + heightInPixels
+
+                c.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), paint)
+            }
         }
     }
 }

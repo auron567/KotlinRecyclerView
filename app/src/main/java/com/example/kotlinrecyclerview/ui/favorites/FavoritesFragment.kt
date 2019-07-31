@@ -39,7 +39,7 @@ class FavoritesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val favorites = CreatureStore.getFavoriteCreatures(context!!)
-        adapter.updateCreatures(favorites)
+        val composites = CreatureStore.getFavoriteComposites(context!!)
+        adapter.updateCreatures(composites)
     }
 }
