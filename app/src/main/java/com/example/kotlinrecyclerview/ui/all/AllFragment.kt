@@ -3,8 +3,8 @@ package com.example.kotlinrecyclerview.ui.all
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.CreatureStore
 import com.example.kotlinrecyclerview.ui.adapter.CreatureCardAdapter
@@ -17,7 +17,7 @@ class AllFragment : Fragment() {
     }
 
     private val adapter = CreatureCardAdapter(CreatureStore.getCreatures().toMutableList())
-    private lateinit var layoutManager: StaggeredGridLayoutManager
+    private lateinit var layoutManager: GridLayoutManager
     private lateinit var listItemDecoration: RecyclerView.ItemDecoration
     private lateinit var gridItemDecoration: RecyclerView.ItemDecoration
     private var gridState = GridState.GRID
@@ -34,11 +34,16 @@ class AllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+        layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return adapter.spanSizeAtPosition(position)
+            }
+        }
         creature_recycler_view.layoutManager = layoutManager
         creature_recycler_view.adapter = adapter
 
-        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.padding_standard)
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.creature_card_grid_layout_margin)
         listItemDecoration = SpacingItemDecoration(1, spacingInPixels)
         gridItemDecoration = SpacingItemDecoration(2, spacingInPixels)
 
@@ -101,6 +106,7 @@ class AllFragment : Fragment() {
         removeItemDecoration: RecyclerView.ItemDecoration
     ) {
         layoutManager.spanCount = spanCount
+        adapter.jupiterSpanSize = spanCount
         creature_recycler_view.removeItemDecoration(removeItemDecoration)
         creature_recycler_view.addItemDecoration(addItemDecoration)
     }
