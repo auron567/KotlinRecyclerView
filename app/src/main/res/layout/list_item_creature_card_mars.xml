@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/creature_image"
@@ -27,37 +27,31 @@
             android:contentDescription="@string/content_description_creature_image"
             android:scaleType="fitXY"
             tools:src="@drawable/thumbnail_creature_monster_purple" />
-        
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/creature_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_half"
+            android:maxLines="3"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:textColor="@android:color/black"
+            tools:text="Purple Monster" />
 
-            <TextView
-                android:id="@+id/creature_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/padding_half"
-                android:maxLines="3"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                tools:textColor="@android:color/black"
-                tools:text="Purple Monster" />
-            
-            <TextView
-                android:id="@+id/slogan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/padding_half"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="@string/jupiter_slogan"
-                tools:textColor="@android:color/black" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/slogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_half"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/mars_slogan"
+            tools:textColor="@android:color/black" />
 
     </LinearLayout>
 

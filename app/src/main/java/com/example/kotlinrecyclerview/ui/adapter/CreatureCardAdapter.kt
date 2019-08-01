@@ -26,6 +26,7 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
         return when (viewType) {
             ViewType.OTHER.ordinal -> ViewHolder(parent.inflate(R.layout.list_item_creature_card))
             ViewType.JUPITER.ordinal -> ViewHolder(parent.inflate(R.layout.list_item_creature_card_jupiter))
+            ViewType.MARS.ordinal -> ViewHolder(parent.inflate(R.layout.list_item_creature_card_mars))
             else -> throw IllegalArgumentException()
         }
     }
@@ -33,10 +34,10 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
     override fun getItemCount() = creatures.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (creatures[position].planet == Constants.JUPITER) {
-            ViewType.JUPITER.ordinal
-        } else {
-            ViewType.OTHER.ordinal
+        return when (creatures[position].planet) {
+            Constants.JUPITER -> ViewType.JUPITER.ordinal
+            Constants.MARS -> ViewType.MARS.ordinal
+            else -> ViewType.OTHER.ordinal
         }
     }
 
@@ -111,6 +112,6 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
     }
 
     enum class ViewType {
-        JUPITER, OTHER
+        JUPITER, MARS, OTHER
     }
 }
