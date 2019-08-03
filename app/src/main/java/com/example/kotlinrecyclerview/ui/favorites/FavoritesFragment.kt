@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.CreatureStore
@@ -32,6 +33,7 @@ class FavoritesFragment : Fragment() {
 
         val heightInPixels = resources.getDimensionPixelSize(R.dimen.list_item_divider_height)
         val itemDecoration = DividerItemDecoration(ContextCompat.getColor(context!!, R.color.black), heightInPixels)
+        setupItemTouchHelper()
 
         favorites_recycler_view.addItemDecoration(itemDecoration)
     }
@@ -39,7 +41,12 @@ class FavoritesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val composites = CreatureStore.getFavoriteComposites(context!!)
-        adapter.updateCreatures(composites)
+        val favorites = CreatureStore.getFavoriteCreatures(context!!)
+        adapter.updateCreatures(favorites)
+    }
+
+    private fun setupItemTouchHelper() {
+        val itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
+        itemTouchHelper.attachToRecyclerView(favorites_recycler_view)
     }
 }
