@@ -8,18 +8,20 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.CreatureStore
 import com.example.kotlinrecyclerview.ui.adapter.CreatureAdapter
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), ItemDragListener {
 
     companion object {
         fun newInstance() = FavoritesFragment()
     }
 
-    private val adapter = CreatureAdapter(mutableListOf())
+    private val adapter = CreatureAdapter(mutableListOf(), this)
+    private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
@@ -46,7 +48,11 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun setupItemTouchHelper() {
-        val itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
+        itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(favorites_recycler_view)
+    }
+
+    override fun onItemDrag(viewHolder: RecyclerView.ViewHolder) {
+        itemTouchHelper.startDrag(viewHolder)
     }
 }

@@ -4,4 +4,5 @@
     <color name="colorAccent">#8559DA</color>
     <color name="grey_600">#757575</color>
     <color name="black">#000000</color>
+    <color name="selected_item">#E1BEE7</color>
 </resources>
