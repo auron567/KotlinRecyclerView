@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinrecyclerview.R
 import com.example.kotlinrecyclerview.model.CreatureStore
 import com.example.kotlinrecyclerview.ui.adapter.CreatureCardAdapter
+import com.example.kotlinrecyclerview.ui.creature.GridItemTouchHelperCallback
 import kotlinx.android.synthetic.main.fragment_all.*
 
 class AllFragment : Fragment() {
@@ -34,32 +36,10 @@ class AllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return adapter.spanSizeAtPosition(position)
-            }
-        }
-        creature_recycler_view.layoutManager = layoutManager
-        creature_recycler_view.adapter = adapter
-
-        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.creature_card_grid_layout_margin)
-        listItemDecoration = SpacingItemDecoration(1, spacingInPixels)
-        gridItemDecoration = SpacingItemDecoration(2, spacingInPixels)
-
-        creature_recycler_view.addItemDecoration(gridItemDecoration)
-
-        creature_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                adapter.scrollDirection = if (dy > 0) {
-                    CreatureCardAdapter.ScrollDirection.DOWN
-                } else {
-                    CreatureCardAdapter.ScrollDirection.UP
-                }
-            }
-        })
+        setupRecyclerView()
+        setupItemDecoration()
+        setupItemTouchHelper()
+        setupScrollListener()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -98,6 +78,44 @@ class AllFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupRecyclerView() {
+        layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return adapter.spanSizeAtPosition(position)
+            }
+        }
+        creature_recycler_view.layoutManager = layoutManager
+        creature_recycler_view.adapter = adapter
+    }
+
+    private fun setupItemDecoration() {
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.creature_card_grid_layout_margin)
+        listItemDecoration = SpacingItemDecoration(1, spacingInPixels)
+        gridItemDecoration = SpacingItemDecoration(2, spacingInPixels)
+
+        creature_recycler_view.addItemDecoration(gridItemDecoration)
+    }
+
+    private fun setupItemTouchHelper() {
+        val itemTouchHelper = ItemTouchHelper(GridItemTouchHelperCallback(adapter))
+        itemTouchHelper.attachToRecyclerView(creature_recycler_view)
+    }
+
+    private fun setupScrollListener() {
+        creature_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                adapter.scrollDirection = if (dy > 0) {
+                    CreatureCardAdapter.ScrollDirection.DOWN
+                } else {
+                    CreatureCardAdapter.ScrollDirection.UP
+                }
+            }
+        })
     }
 
     private fun updateRecyclerView(

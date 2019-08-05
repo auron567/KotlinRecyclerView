@@ -10,14 +10,16 @@ import com.example.kotlinrecyclerview.app.Constants
 import com.example.kotlinrecyclerview.app.inflate
 import com.example.kotlinrecyclerview.model.Creature
 import com.example.kotlinrecyclerview.ui.creature.CreatureActivity
+import com.example.kotlinrecyclerview.ui.favorites.ItemTouchHelperListener
 import kotlinx.android.synthetic.main.list_item_creature_card.view.creature_card
 import kotlinx.android.synthetic.main.list_item_creature_card.view.creature_image
 import kotlinx.android.synthetic.main.list_item_creature_card.view.creature_name
 import kotlinx.android.synthetic.main.list_item_creature_card_jupiter.view.*
 import java.lang.IllegalArgumentException
+import java.util.*
 
 class CreatureCardAdapter(private val creatures: MutableList<Creature>)
-    : RecyclerView.Adapter<CreatureCardAdapter.ViewHolder>() {
+    : RecyclerView.Adapter<CreatureCardAdapter.ViewHolder>(), ItemTouchHelperListener {
 
     var scrollDirection = ScrollDirection.DOWN
     var jupiterSpanSize = 2
@@ -51,6 +53,21 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
         } else {
             1
         }
+    }
+
+    override fun onItemMove(recyclerView: RecyclerView, fromPosition: Int, toPosition: Int): Boolean {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(creatures, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(creatures, i, i - 1)
+            }
+        }
+
+        notifyItemMoved(fromPosition, toPosition)
+        return true
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
