@@ -7,8 +7,13 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) : I
 
     override fun isLongPressDragEnabled() = false
 
+    override fun isItemViewSwipeEnabled() = true
+
     override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-        return makeMovementFlags(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0)
+        return makeMovementFlags(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        )
     }
 
     override fun onMove(
@@ -20,6 +25,7 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) : I
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+        return listener.onItemDismiss(viewHolder, viewHolder.adapterPosition)
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {

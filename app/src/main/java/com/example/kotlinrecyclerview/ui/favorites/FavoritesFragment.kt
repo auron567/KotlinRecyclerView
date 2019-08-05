@@ -35,9 +35,9 @@ class FavoritesFragment : Fragment(), ItemDragListener {
 
         val heightInPixels = resources.getDimensionPixelSize(R.dimen.list_item_divider_height)
         val itemDecoration = DividerItemDecoration(ContextCompat.getColor(context!!, R.color.black), heightInPixels)
-        setupItemTouchHelper()
-
         favorites_recycler_view.addItemDecoration(itemDecoration)
+
+        setupItemTouchHelper()
     }
 
     override fun onResume() {

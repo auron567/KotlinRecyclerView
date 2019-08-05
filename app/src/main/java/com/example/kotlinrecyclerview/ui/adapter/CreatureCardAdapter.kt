@@ -70,6 +70,9 @@ class CreatureCardAdapter(private val creatures: MutableList<Creature>)
         return true
     }
 
+    override fun onItemDismiss(viewHolder: RecyclerView.ViewHolder, position: Int) {
+    }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private lateinit var creature: Creature
 
